@@ -25,39 +25,17 @@ bundle install
 
 ### Tailwind CSS
 
-Import the layered-ui styles in your `app/assets/tailwind/application.css`:
+Run the install generator to copy the CSS to your application:
 
-```css
-@import "tailwindcss";
-@import "../builds/tailwind/layered_ui";
+```bash
+bin/rails generate layered_ui:install
 ```
 
-The gem follows the [tailwindcss-rails engine convention](https://github.com/rails/tailwindcss-rails?tab=readme-ov-file#rails-engines-support-experimental). Run `rails tailwindcss:engines` to generate the entry point at `app/assets/builds/tailwind/layered_ui.css`.
+This will:
+- Copy `layered_ui.css` to `app/assets/tailwind/layered_ui.css`
+- Add `@import "./layered_ui";` to your `app/assets/tailwind/application.css`
 
-**Development:** Add `bundle exec rails tailwindcss:engines` to your `bin/dev` script before foreman starts to ensure engine CSS is always up to date during development.
-
-**Production:** Choose one of these approaches:
-
-1. **Commit the built CSS** (simpler deploys):
-   ```bash
-   bin/rails tailwindcss:engines
-   git add app/assets/builds/tailwind/layered_ui.css
-   git commit -m "Add compiled engine CSS for production"
-   ```
-
-   Add to your `.gitignore`:
-   ```gitignore
-   /app/assets/builds/*
-   !/app/assets/builds/tailwind/
-   !/app/assets/builds/tailwind/layered_ui.css
-   ```
-
-2. **Build during deployment** (keeps build artifacts out of version control):
-   ```ruby
-   # In your Rakefile or a rake task file
-   Rake::Task["assets:precompile"].enhance(["tailwindcss:engines"])
-   ```
-   Or run `bin/rails tailwindcss:engines` before `assets:precompile` in your deploy script.
+The copied CSS file can be customized as needed for your application.
 
 ### JavaScript
 

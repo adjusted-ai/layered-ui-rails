@@ -14,12 +14,17 @@ This is **layered-ui**, a Rails 8+ engine gem that provides a foundational respo
 - Registers importmap paths from `config/importmap.rb`
 - Adds `app/assets/images` and `app/javascript` to the asset pipeline
 
-**CSS (`app/assets/tailwind/layered_ui/engine.css`):**
+**CSS (`app/assets/tailwind/layered_ui/styles.css`):**
 - Design tokens as CSS variables (HSL format) with light/dark mode variants
 - Dark mode via `.dark` class on `<html>` (class-based, not media query)
 - Custom Tailwind `@theme` block exposes tokens as utilities (e.g., `bg-background`, `text-foreground`)
 - Component classes: `.btn-primary`, `.field`, `.nav-item`, `.notice--success`, etc.
 - Layout: 63px header, 240px sidebar, 320px assistant panel
+
+**Generator (`lib/generators/layered_ui/install_generator.rb`):**
+- Copies CSS to host app at `app/assets/tailwind/layered_ui.css`
+- Adds `@import "./layered_ui";` to `app/assets/tailwind/application.css`
+- Run with: `bin/rails generate layered_ui:install`
 
 **JavaScript (`app/javascript/layered_ui/`):**
 - `index.js` - Registers all controllers with the Stimulus application
@@ -41,6 +46,6 @@ gem install ./layered-ui-0.1.0.gem
 
 ## Key Conventions
 
-- Follows [tailwindcss-rails engine convention](https://github.com/rails/tailwindcss-rails?tab=readme-ov-file#rails-engines-support-experimental) for CSS
+- CSS is installed via generator (`bin/rails generate layered_ui:install`) which copies it to the host app
 - JavaScript uses importmap (no bundler)
 - Stimulus controllers registered as `theme` and `mobile-menu`

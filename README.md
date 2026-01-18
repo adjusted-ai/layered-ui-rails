@@ -35,8 +35,6 @@ This will:
 - Copy `layered_ui.css` to `app/assets/tailwind/layered_ui.css`
 - Add `@import "./layered_ui";` to your `app/assets/tailwind/application.css`
 
-The copied CSS file can be customized as needed for your application.
-
 ### JavaScript
 
 The gem automatically configures importmap. Import and register the controllers in your `application.js`:

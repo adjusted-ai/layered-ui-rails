@@ -45,6 +45,13 @@ The gem follows the [tailwindcss-rails engine convention](https://github.com/rai
    git commit -m "Add compiled engine CSS for production"
    ```
 
+   Add to your `.gitignore`:
+   ```gitignore
+   /app/assets/builds/*
+   !/app/assets/builds/tailwind/
+   !/app/assets/builds/tailwind/layered_ui_engine.css
+   ```
+
 2. **Build during deployment** (keeps build artifacts out of version control):
    ```ruby
    # In your Rakefile or a rake task file

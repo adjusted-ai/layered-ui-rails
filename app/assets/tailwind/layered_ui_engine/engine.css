@@ -1,0 +1,375 @@
+@import "tailwindcss";
+
+/* Make dark mode class-based instead of media query */
+@variant dark (&:where(.dark, .dark *));
+
+/* Design tokens you'll switch at runtime */
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 13%;
+    --foreground-muted: 0 0% 39%;
+    --border: 0 0% 91%;
+    --surface: 0 0% 98%;
+    --surface-subtle: 0 0% 96%;
+    --surface-active: 0 0% 94%;
+    --link: 0 0% 45%;
+    --link-hover: 0 0% 9%;
+    --button-primary-bg: 0 0% 9%;
+    --button-primary-text: 0 0% 100%;
+    --danger: 0 72% 51%;
+    --danger-light: 0 100% 97%;
+    --danger-text: 0 72% 45%;
+    --success-bg: 142 76% 65%;
+    --success-text: 142 76% 20%;
+    --warning-bg: 48 96% 65%;
+    --warning-text: 48 96% 20%;
+    --error-bg: 0 84% 70%;
+    --error-text: 0 93% 15%;
+    --button-primary-hover: 0 0% 83%;
+    --typing-indicator: 0 0% 27%;
+  }
+
+  .dark {
+    --background: 0 0% 7%;
+    --foreground: 0 0% 89%;
+    --foreground-muted: 0 0% 71%;
+    --border: 0 0% 16%;
+    --surface: 0 0% 10%;
+    --surface-subtle: 0 0% 12%;
+    --surface-active: 0 0% 23%;
+    --link: 0 0% 45%;
+    --link-hover: 0 0% 89%;
+    --button-primary-bg: 0 0% 100%;
+    --button-primary-text: 0 0% 9%;
+    --danger: 0 72% 50%;
+    --danger-light: 0 93% 15%;
+    --danger-text: 0 72% 65%;
+    --success-bg: 142 76% 20%;
+    --success-text: 142 76% 65%;
+    --warning-bg: 48 96% 20%;
+    --warning-text: 48 96% 65%;
+    --error-bg: 0 93% 15%;
+    --error-text: 0 84% 70%;
+    --button-primary-hover: 0 0% 90%;
+    --typing-indicator: 0 0% 63%;
+  }
+}
+
+/* Expose tokens to Tailwind utilities via @theme */
+@theme {
+  --font-manrope: 'Manrope', ui-sans-serif, system-ui, sans-serif;
+  --font-inter: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-foreground-muted: hsl(var(--foreground-muted));
+  --color-border: hsl(var(--border));
+  --color-surface: hsl(var(--surface));
+  --color-surface-subtle: hsl(var(--surface-subtle));
+  --color-surface-active: hsl(var(--surface-active));
+  --color-link: hsl(var(--link));
+  --color-link-hover: hsl(var(--link-hover));
+  --color-button-primary-bg: hsl(var(--button-primary-bg));
+  --color-button-primary-text: hsl(var(--button-primary-text));
+  --color-danger: hsl(var(--danger));
+  --color-danger-light: hsl(var(--danger-light));
+  --color-danger-text: hsl(var(--danger-text));
+  --color-success-bg: hsl(var(--success-bg));
+  --color-success-text: hsl(var(--success-text));
+  --color-warning-bg: hsl(var(--warning-bg));
+  --color-warning-text: hsl(var(--warning-text));
+  --color-error-bg: hsl(var(--error-bg));
+  --color-error-text: hsl(var(--error-text));
+  --color-button-primary-hover: hsl(var(--button-primary-hover));
+  --color-typing-indicator: hsl(var(--typing-indicator));
+}
+
+/* Utilities */
+@utility btn {
+  @apply px-4 py-1.5 text-sm font-medium rounded-sm transition-colors cursor-pointer;
+}
+
+@utility label {
+  @apply block w-full text-sm text-foreground font-manrope font-bold;
+}
+
+@utility heading {
+  @apply font-manrope font-bold;
+}
+/* Pages */
+html {
+  height: calc(100% - 63px);
+}
+
+body {
+  @apply antialiased h-full bg-background font-inter text-foreground;
+}
+
+.page {
+  @apply relative top-[63px] p-4;
+}
+
+.page--with-nav {
+  @apply md:ml-[240px];
+}
+
+.page--vertically-centered {
+  @apply flex flex-col items-center justify-center h-full;
+}
+
+.page--width-constrained {
+  @apply w-full flex flex-col max-w-xl;
+}
+
+/* Containers */
+.container--header {
+  @apply fixed top-0 left-0 right-0 bg-background border-b border-border z-50;
+}
+
+.header {
+  @apply h-[63px] px-4 py-3 flex items-center justify-between;
+}
+
+.container--nav {
+  @apply w-[240px] fixed top-[63px] left-0 bottom-0 bg-background border-r border-t border-border z-50 transform -translate-x-full md:translate-x-0 transition-transform duration-200;
+}
+
+.container--nav.open {
+  @apply translate-x-0;
+}
+
+.nav {
+  @apply flex flex-col h-full p-4;
+}
+
+.mobile-menu-btn {
+  @apply p-2 text-foreground transition-colors cursor-pointer hover:text-button-primary-bg md:hidden;
+}
+
+.nav-item {
+  @apply block w-full text-left px-3 py-2 text-sm text-foreground hover:bg-surface rounded-sm transition-colors;
+}
+
+.nav-item--active {
+  @apply bg-surface-active font-medium;
+}
+
+.container--checkbox {
+  @apply flex items-center gap-2;
+}
+
+/* Buttons */
+.btn-primary {
+  @apply btn bg-button-primary-bg text-button-primary-text;
+}
+
+.btn-outline {
+  @apply btn text-foreground border border-border;
+}
+
+.btn-outline--danger {
+  @apply btn text-danger border border-danger;
+}
+
+/* Notices */
+.notice {
+  @apply w-full py-2 px-3 text-sm rounded mb-4;
+}
+
+.notice--success {
+  @apply bg-success-bg text-success-text;
+}
+
+.notice--warning {
+  @apply bg-warning-bg text-warning-text;
+}
+
+.notice--error {
+  @apply bg-error-bg text-error-text;
+}
+
+/* Forms */
+.label--checkbox {
+  @apply label cursor-pointer;
+}
+
+.field {
+  @apply block border border-border font-inter mt-2 px-3 py-2 rounded-sm text-foreground text-sm w-full focus:outline-none;
+}
+
+.field_with_errors .field {
+  @apply text-xs border-danger;
+}
+
+.select {
+  @apply block border border-border bg-background font-inter pl-3 pr-8 py-2 rounded-sm text-foreground text-sm w-full focus:outline-none cursor-pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23a3a3a3'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  background-position: right 0.5rem center;
+  background-repeat: no-repeat;
+  background-size: 1rem;
+  appearance: none;
+}
+
+/* Typography */
+.paragraph {
+  @apply leading-relaxed text-sm mt-4;
+}
+
+/* Headings */
+h1 {
+  @apply heading text-xl;
+}
+
+h2 {
+  @apply heading text-lg;
+}
+
+h3 {
+  @apply heading;
+}
+
+/* Links */
+.link {
+  @apply text-link hover:text-link-hover;
+}
+
+/* Dropdowns */
+.dropdown {
+  @apply relative;
+}
+
+.dropdown-trigger {
+  @apply text-xs font-medium text-foreground cursor-pointer list-none flex items-center hover:text-button-primary-bg transition-colors;
+}
+
+.dropdown-trigger::-webkit-details-marker {
+  @apply hidden;
+}
+
+.dropdown-menu {
+  @apply absolute right-0 mt-2 w-48 bg-surface border border-surface-subtle rounded-sm shadow-lg z-50;
+}
+
+.dropdown-item {
+  @apply block w-full text-left px-4 py-2 text-xs text-foreground hover:bg-surface-subtle transition-colors cursor-pointer border-0 bg-transparent font-inter;
+}
+
+.dropdown-item--active {
+  @apply bg-surface-active font-medium;
+}
+
+/* Tables */
+.table {
+  @apply min-w-full divide-y divide-border;
+}
+
+.table-header {
+  @apply bg-transparent;
+}
+
+.table-header-cell {
+  @apply py-3 text-left text-sm font-bold font-manrope;
+}
+
+.table-body {
+  @apply bg-background divide-y divide-border;
+}
+
+.table-cell {
+  @apply py-4 whitespace-nowrap text-sm;
+}
+
+.table-cell--primary {
+  @apply py-4 whitespace-nowrap text-sm font-medium;
+}
+
+.table-cell--muted {
+  @apply py-4 whitespace-nowrap text-sm text-foreground-muted;
+}
+
+/* Pagination */
+.pagy {
+  @apply flex items-center justify-center gap-1 mt-6 select-none;
+}
+
+.pagy a,
+.pagy span {
+  @apply flex items-center justify-center h-8 px-3 text-sm font-medium rounded-sm transition-colors min-w-[2rem];
+}
+
+.pagy a {
+  @apply text-foreground hover:bg-surface-subtle;
+}
+
+.pagy a[aria-current="page"] {
+  @apply bg-surface-active text-foreground font-bold pointer-events-none;
+}
+
+.pagy .disabled {
+  @apply text-foreground-muted opacity-50 cursor-not-allowed;
+}
+
+.pagy .gap {
+  @apply text-foreground-muted pointer-events-none;
+}
+
+/* Badges */
+.badge--number {
+  @apply flex-shrink-0 w-6 h-6 rounded-full bg-surface-subtle border border-border flex items-center justify-center text-xs font-medium text-foreground-muted;
+}
+
+.badge-default {
+  @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200;
+}
+
+.badge-github {
+  @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200;
+}
+
+.badge-netlify {
+  @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-teal-100 text-teal-800 dark:bg-teal-900 dark:text-teal-200;
+}
+
+.badge-cloudflare {
+  @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200;
+}
+
+/* Assistant */
+.container--assistant{
+  @apply w-full md:w-[320px] fixed top-[63px] right-0 bottom-0 bg-background border-l border-border z-40 transform translate-x-full transition-transform duration-300;
+}
+
+.container--assistant.open {
+  @apply translate-x-0;
+}
+
+.assistant-fab {
+  @apply fixed bottom-6 right-6 w-14 h-14 bg-button-primary-bg text-button-primary-text rounded-full shadow-lg hover:bg-button-primary-hover transition-all z-40 flex items-center justify-center;
+}
+
+.assistant-fab.hidden {
+  @apply opacity-0 pointer-events-none;
+}
+
+/* Typing indicator */
+.typing-indicator {
+  display: inline-block;
+  position: relative;
+  top: -2px;
+  min-height: 1em;
+}
+
+.typing-indicator::after {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: hsl(var(--typing-indicator));
+  border-radius: 50%;
+  animation: typing-indicator-pulse 1s infinite ease-in-out;
+}
+
+@keyframes typing-indicator-pulse {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 1; }
+}

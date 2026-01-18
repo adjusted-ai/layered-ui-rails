@@ -85,10 +85,6 @@
 }
 
 /* Utilities */
-@utility btn {
-  @apply px-4 py-1.5 text-sm font-medium rounded-sm transition-colors cursor-pointer;
-}
-
 @utility label {
   @apply block w-full text-sm text-foreground font-manrope font-bold;
 }
@@ -96,6 +92,7 @@
 @utility heading {
   @apply font-manrope font-bold;
 }
+
 /* Pages */
 html {
   height: calc(100% - 63px);
@@ -130,6 +127,59 @@ body {
   @apply h-[63px] px-4 py-3 flex items-center justify-between;
 }
 
+.header-nav {
+  @apply flex items-center gap-4;
+}
+
+.header-logo {
+  @apply h-8;
+}
+
+.header-logo--light {
+  @apply block;
+}
+
+.header-logo--dark {
+  @apply hidden;
+}
+
+.dark .header-logo--light {
+  @apply hidden;
+}
+
+.dark .header-logo--dark {
+  @apply block;
+}
+
+.theme-toggle {
+  @apply text-foreground-muted p-2 transition-opacity cursor-pointer;
+}
+
+.theme-toggle-icon--light {
+  @apply block;
+}
+
+.theme-toggle-icon--dark {
+  @apply hidden;
+}
+
+.dark .theme-toggle-icon--light {
+  @apply hidden;
+}
+
+.dark .theme-toggle-icon--dark {
+  @apply block;
+}
+
+/* Icons */
+.icon-sm {
+  @apply w-5 h-5;
+}
+
+.icon-md {
+  @apply w-6 h-6;
+}
+
 .container--nav {
   @apply w-[240px] fixed top-[63px] left-0 bottom-0 bg-background border-r border-t border-border z-50 transform -translate-x-full md:translate-x-0 transition-transform duration-200;
 }
@@ -154,21 +204,49 @@ body {
   @apply bg-surface-active font-medium;
 }
 
+.nav-links {
+  @apply flex-1 flex flex-col gap-2;
+}
+
+.nav-user {
+  @apply mt-4;
+}
+
+.nav-user-name {
+  @apply text-sm font-bold mt-4;
+}
+
+.nav-user-email {
+  @apply text-xs text-foreground-muted mt-0.5;
+}
+
 .container--checkbox {
   @apply flex items-center gap-2;
 }
 
 /* Buttons */
 .btn-primary {
-  @apply btn bg-button-primary-bg text-button-primary-text;
+  @apply px-4 py-1.5 text-sm font-medium rounded-sm transition-colors cursor-pointer bg-button-primary-bg text-button-primary-text;
+}
+
+.btn-primary--full {
+  @apply px-4 py-1.5 text-sm font-medium rounded-sm transition-colors cursor-pointer bg-button-primary-bg text-button-primary-text w-full text-center;
 }
 
 .btn-outline {
-  @apply btn text-foreground border border-border;
+  @apply px-4 py-1.5 text-sm font-medium rounded-sm transition-colors cursor-pointer text-foreground border border-border;
+}
+
+.btn-outline--full {
+  @apply px-4 py-1.5 text-sm font-medium rounded-sm transition-colors cursor-pointer text-foreground border border-border w-full text-center;
 }
 
 .btn-outline--danger {
-  @apply btn text-danger border border-danger;
+  @apply px-4 py-1.5 text-sm font-medium rounded-sm transition-colors cursor-pointer text-danger border border-danger;
+}
+
+.btn-outline--danger-full {
+  @apply px-4 py-1.5 text-sm font-medium rounded-sm transition-colors cursor-pointer text-danger border border-danger w-full text-center;
 }
 
 /* Notices */
@@ -189,6 +267,38 @@ body {
 }
 
 /* Forms */
+.form {
+  @apply w-full mt-4;
+}
+
+.form-group {
+  @apply mt-4;
+}
+
+.form-group--large {
+  @apply mt-8;
+}
+
+.form-hint {
+  @apply text-xs text-foreground-muted;
+}
+
+.form-required {
+  @apply text-danger;
+}
+
+.form-errors {
+  @apply w-full py-2 px-3 border border-danger text-danger text-sm font-medium rounded-md mt-4;
+}
+
+.form-errors-list {
+  @apply font-inter text-sm list-disc pl-3 mt-2;
+}
+
+.field-error {
+  @apply text-danger text-xs mt-1;
+}
+
 .label--checkbox {
   @apply label cursor-pointer;
 }
@@ -210,9 +320,35 @@ body {
   appearance: none;
 }
 
+/* Radio/Checkbox groups */
+.radio-group {
+  @apply mt-2 flex flex-col gap-2;
+}
+
+.radio-item {
+  @apply flex items-center;
+}
+
+.radio-input {
+  @apply mr-2;
+}
+
+.radio-label {
+  @apply text-sm;
+}
+
 /* Typography */
 .paragraph {
   @apply leading-relaxed text-sm mt-4;
+}
+
+.paragraph--compact {
+  @apply leading-relaxed text-sm mt-0;
+}
+
+/* Auth links */
+.auth-links {
+  @apply flex flex-col gap-1 text-sm;
 }
 
 /* Headings */

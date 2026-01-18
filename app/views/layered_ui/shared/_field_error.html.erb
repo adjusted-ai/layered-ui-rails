@@ -1,0 +1,5 @@
+<% if object.errors[field].any? %>
+  <p class="field-error">
+    <%= object.errors[field].first %>
+  </p>
+<% end %>

@@ -1,0 +1,12 @@
+<% name ||= nil %>
+
+<%= form.label field, class: "label" do %>
+  <% if name.present? %>
+    <%= name %>
+  <% else %>
+    <%= field.to_s.humanize %>
+  <% end %>
+  <% if required %>
+    <span class="form-required">*</span>
+  <% end %>
+<% end %>

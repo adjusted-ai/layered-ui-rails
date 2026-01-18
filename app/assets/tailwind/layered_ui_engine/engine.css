@@ -84,7 +84,7 @@
   --color-typing-indicator: hsl(var(--typing-indicator));
 }
 
-/* Base utilities */
+/* Utilities */
 @utility label {
   @apply block w-full text-sm text-foreground font-manrope font-bold;
 }
@@ -92,6 +92,7 @@
 @utility heading {
   @apply font-manrope font-bold;
 }
+
 /* Pages */
 html {
   height: calc(100% - 63px);

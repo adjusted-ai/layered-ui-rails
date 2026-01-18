@@ -1,0 +1,11 @@
+<% flash.each do |name, msg| %>
+  <% if msg.present? %>
+    <p class="notice <%= case name
+      when 'notice' then "notice--success"
+      when 'error' then "notice--error"
+      else "notice--warning"
+    end %>" id="<%= name %>">
+      <%= msg %>
+    </p>
+  <% end %>
+<% end %>

@@ -14,7 +14,7 @@ This is **layered-ui**, a Rails 8+ engine gem that provides a foundational respo
 - Registers importmap paths from `config/importmap.rb`
 - Adds `app/assets/images` and `app/javascript` to the asset pipeline
 
-**CSS (`app/assets/tailwind/layered_ui_engine/engine.css`):**
+**CSS (`app/assets/tailwind/layered_ui/engine.css`):**
 - Design tokens as CSS variables (HSL format) with light/dark mode variants
 - Dark mode via `.dark` class on `<html>` (class-based, not media query)
 - Custom Tailwind `@theme` block exposes tokens as utilities (e.g., `bg-background`, `text-foreground`)

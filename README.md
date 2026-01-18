@@ -29,10 +29,10 @@ Import the layered-ui styles in your `app/assets/tailwind/application.css`:
 
 ```css
 @import "tailwindcss";
-@import "../builds/tailwind/layered_ui_engine";
+@import "../builds/tailwind/layered_ui";
 ```
 
-The gem follows the [tailwindcss-rails engine convention](https://github.com/rails/tailwindcss-rails?tab=readme-ov-file#rails-engines-support-experimental). Run `rails tailwindcss:engines` to generate the entry point at `app/assets/builds/tailwind/layered_ui_engine.css`.
+The gem follows the [tailwindcss-rails engine convention](https://github.com/rails/tailwindcss-rails?tab=readme-ov-file#rails-engines-support-experimental). Run `rails tailwindcss:engines` to generate the entry point at `app/assets/builds/tailwind/layered_ui.css`.
 
 **Development:** Add `bundle exec rails tailwindcss:engines` to your `bin/dev` script before foreman starts to ensure engine CSS is always up to date during development.
 
@@ -41,7 +41,7 @@ The gem follows the [tailwindcss-rails engine convention](https://github.com/rai
 1. **Commit the built CSS** (simpler deploys):
    ```bash
    bin/rails tailwindcss:engines
-   git add app/assets/builds/tailwind/layered_ui_engine.css
+   git add app/assets/builds/tailwind/layered_ui.css
    git commit -m "Add compiled engine CSS for production"
    ```
 
@@ -49,7 +49,7 @@ The gem follows the [tailwindcss-rails engine convention](https://github.com/rai
    ```gitignore
    /app/assets/builds/*
    !/app/assets/builds/tailwind/
-   !/app/assets/builds/tailwind/layered_ui_engine.css
+   !/app/assets/builds/tailwind/layered_ui.css
    ```
 
 2. **Build during deployment** (keeps build artifacts out of version control):

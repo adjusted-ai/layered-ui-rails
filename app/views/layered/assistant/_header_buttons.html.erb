@@ -1,0 +1,45 @@
+<div class="assistant-header-buttons" id="<%= dom_id(conversation) %>_header_buttons">
+  <% conversations = current_user.layered_assistant_conversations.by_created_at %>
+
+  <div class="assistant-header-select-wrapper">
+    <%= form_with url: "#", method: :post, data: {
+      controller: "layered-assistant-conversation-switcher",
+      layered_assistant_conversation_switcher_create_path_value: layered_assistant.conversations_path,
+      layered_assistant_conversation_switcher_switch_path_template_value: layered_assistant.switch_conversation_path(":id").gsub("%3Aid", ":id"),
+      turbo: true
+    } do |f| %>
+      <%= f.select :conversation_id,
+          options_for_select(
+            conversations.map { |c|
+              name = c.name || "Untitled Conversation"
+              name += " (#{c.project.name})" if c.project
+              [name, c.id]
+            } + [['+ New conversation', 'new']],
+            current_conversation&.id
+          ),
+          {},
+          { class: "select w-full", data: { action: "change->layered-assistant-conversation-switcher#switch" } } %>
+    <% end %>
+  </div>
+
+  <div class="assistant-header-actions">
+    <%= button_to layered_assistant.conversation_path(conversation),
+                  method: :delete,
+                  class: "assistant-header-btn",
+                  title: "Delete conversation",
+                  data: { turbo_confirm: "Are you sure you want to delete this conversation?" } do %>
+      <svg class="icon-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+      </svg>
+    <% end %>
+
+    <button type="button"
+            class="assistant-header-btn"
+            data-action="click->layered-assistant#toggle"
+            data-layered-assistant-target="toggleButton">
+      <svg class="icon-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+  </div>
+</div>

@@ -510,6 +510,51 @@ h3 {
   50% { opacity: 1; }
 }
 
+/* Assistant Layout */
+.assistant-resize-handle {
+  @apply hidden md:block absolute left-0 top-0 bottom-0 w-1 cursor-col-resize hover:bg-link transition-colors z-50;
+}
+
+.assistant-panel {
+  @apply flex flex-col h-full;
+}
+
+.assistant-header {
+  @apply flex flex-col border-b border-border;
+}
+
+.assistant-header-content {
+  @apply flex items-center p-4;
+}
+
+.assistant-header-buttons {
+  @apply flex items-center gap-2 w-full;
+}
+
+.assistant-header-select-wrapper {
+  @apply flex-1;
+}
+
+.assistant-header-actions {
+  @apply flex items-center gap-2;
+}
+
+.assistant-header-btn {
+  @apply p-1 text-foreground-muted cursor-pointer hover:text-foreground transition-colors;
+}
+
+.assistant-messages {
+  @apply flex-1 overflow-y-auto p-4 space-y-4;
+}
+
+.assistant-input {
+  @apply p-4 border-t border-border;
+}
+
+.assistant-fab-icon {
+  @apply w-6 h-6;
+}
+
 /* Assistant Messages */
 .assistant-message {
   @apply flex flex-col gap-1;
@@ -530,11 +575,11 @@ h3 {
   @apply max-w-[80%] rounded-lg text-sm;
 }
 
-.assistant-message-content [&_ol] {
+.assistant-message-content ol {
   @apply my-3 ml-4 list-decimal;
 }
 
-.assistant-message-content [&_ul] {
+.assistant-message-content ul {
   @apply my-3 ml-4 list-disc;
 }
 

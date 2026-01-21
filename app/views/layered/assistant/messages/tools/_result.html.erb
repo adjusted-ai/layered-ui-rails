@@ -1,0 +1,48 @@
+<div class="assistant-tool">
+  <div class="assistant-tool-header">
+    <%= render "layered/assistant/messages/tools/icon", type: type %>
+    <% if type == "call" %>
+      <span class="assistant-tool-name--call"><%= tool_call.dig("function", "name") %></span>
+    <% else %>
+      <% if message&.tool_name %>
+        <span class="assistant-tool-name--response"><%= message.tool_name %></span>
+      <% else %>
+        <span class="assistant-tool-label">Tool Response</span>
+      <% end %>
+    <% end %>
+  </div>
+  <% if type == "call" %>
+    <% arguments = tool_call.dig("function", "arguments") %>
+    <% if arguments.present? && arguments != "{}" %>
+      <details class="assistant-tool-details">
+        <summary class="assistant-tool-summary">Arguments</summary>
+        <div class="assistant-tool-arguments">
+          <pre><%= pretty_json(arguments) %></pre>
+        </div>
+      </details>
+    <% end %>
+  <% else %>
+    <%
+      # Check if content is JSON
+      is_json = false
+      begin
+        JSON.parse(content)
+        is_json = true
+      rescue JSON::ParserError
+        is_json = false
+      end
+    %>
+    <% if is_json %>
+      <details class="assistant-tool-details">
+        <summary class="assistant-tool-summary">Response</summary>
+        <div class="assistant-tool-response">
+          <pre><%= pretty_json(content) %></pre>
+        </div>
+      </details>
+    <% else %>
+      <div class="assistant-tool-response">
+        <%= render "layered/assistant/messages/shared/content", content: content %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

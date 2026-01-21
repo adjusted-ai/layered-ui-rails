@@ -1,0 +1,22 @@
+<div class="assistant-message assistant-message--<%= modifier %>" id="<%= dom_id(message) %>">
+  <div class="assistant-message-content assistant-message-content--<%= modifier %>">
+    <%= yield %>
+    <% if (message.assistant? && message.ai_model.present?) || message.estimated_tokens.present? %>
+      <div class="assistant-message-meta assistant-message-meta--<%= modifier %>">
+        <% if message.assistant? && message.ai_model.present? %>
+          <span><%= message.ai_model.name %></span>
+        <% end %>
+        <% if message.estimated_tokens.present? && message.assistant? && message.ai_model.present? %>
+          <span class="mx-1">&middot;</span>
+        <% end %>
+        <% if message.estimated_tokens.present? %>
+          <span><%= number_with_delimiter(message.estimated_tokens) %> tokens (~)</span>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="assistant-message-time">
+    <%= time_ago_in_words(message.created_at) %> ago
+  </div>
+</div>

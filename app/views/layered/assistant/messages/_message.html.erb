@@ -1,0 +1,34 @@
+<% if message.system? %>
+  <%= render "layered/assistant/messages/shared/wrapper", message: message, modifier: "system" do %>
+    <details class="assistant-system-details">
+      <summary class="assistant-system-summary">
+        System instructions
+      </summary>
+      <div class="assistant-system-content">
+        <%= render "layered/assistant/messages/shared/content", content: message.content %>
+      </div>
+    </details>
+  <% end %>
+<% elsif message.user? %>
+  <%= render "layered/assistant/messages/shared/wrapper", message: message, modifier: "sent" do %>
+    <%= markdown(message.content) %>
+  <% end %>
+<% elsif message.tool? %>
+  <%= render "layered/assistant/messages/shared/wrapper", message: message, modifier: "tool" do %>
+    <%= render "layered/assistant/messages/tools/result", type: "response", tool_call: nil, content: message.content, message: message %>
+  <% end %>
+<% elsif message.assistant? && message.tool_calls.present? %>
+  <%= render "layered/assistant/messages/shared/wrapper", message: message, modifier: "tool-call" do %>
+    <% message.tool_calls.each do |tool_call| %>
+      <%= render "layered/assistant/messages/tools/result", type: "call", tool_call: tool_call, content: nil %>
+    <% end %>
+  <% end %>
+<% else %>
+  <%= render "layered/assistant/messages/shared/wrapper", message: message, modifier: "received" do %>
+    <% if message.content.blank? %>
+      <div class="typing-indicator"></div>
+    <% else %>
+      <%= render "layered/assistant/messages/shared/content", content: message.content %>
+    <% end %>
+  <% end %>
+<% end %>

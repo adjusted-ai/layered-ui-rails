@@ -1,0 +1,5 @@
+<%= turbo_stream.replace "#{dom_id(@message.conversation)}_message_form" do %>
+  <%= turbo_frame_tag "#{dom_id(@message.conversation)}_message_form" do %>
+    <%= render partial: "layered/assistant/messages/form", locals: { conversation: @message.conversation } %>
+  <% end %>
+<% end %>

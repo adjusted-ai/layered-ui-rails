@@ -509,3 +509,180 @@ h3 {
   0%, 100% { opacity: 0.25; }
   50% { opacity: 1; }
 }
+
+/* Assistant Messages */
+.assistant-message {
+  @apply flex flex-col gap-1;
+}
+
+.assistant-message--sent {
+  @apply items-end;
+}
+
+.assistant-message--received,
+.assistant-message--tool,
+.assistant-message--tool-call,
+.assistant-message--system {
+  @apply items-start;
+}
+
+.assistant-message-content {
+  @apply max-w-[80%] rounded-lg text-sm;
+}
+
+.assistant-message-content [&_ol] {
+  @apply my-3 ml-4 list-decimal;
+}
+
+.assistant-message-content [&_ul] {
+  @apply my-3 ml-4 list-disc;
+}
+
+.assistant-message-content--sent {
+  @apply px-3 py-2 bg-button-primary-bg text-button-primary-text;
+}
+
+.assistant-message-content--received {
+  @apply px-3 py-2 bg-gray-50 dark:bg-surface text-foreground;
+}
+
+.assistant-message-content--tool-call {
+  @apply p-3 bg-blue-500/10 text-gray-800 dark:text-neutral-200;
+}
+
+.assistant-message-content--tool {
+  @apply p-3 bg-green-500/10 text-gray-800 dark:text-neutral-200;
+}
+
+.assistant-message-content--system {
+  @apply p-3 bg-blue-500/10 text-gray-800 dark:text-neutral-200;
+}
+
+.assistant-message-meta {
+  @apply mt-2 pt-2 text-xs text-gray-500 dark:text-neutral-500;
+}
+
+.assistant-message-meta--sent {
+  @apply border-t border-gray-400/30 dark:border-neutral-500/30 text-right;
+}
+
+.assistant-message-meta--received {
+  @apply border-t border-gray-200/50 dark:border-neutral-700/50;
+}
+
+.assistant-message-meta--tool-call,
+.assistant-message-meta--system {
+  @apply border-t border-blue-500/20 dark:border-blue-500/20;
+}
+
+.assistant-message-meta--tool {
+  @apply border-t border-green-500/20 dark:border-green-500/20;
+}
+
+.assistant-message-time {
+  @apply text-xs text-link px-1;
+}
+
+/* Assistant System Message */
+.assistant-system-details {
+  @apply cursor-pointer;
+}
+
+.assistant-system-summary {
+  @apply select-none text-xs text-gray-600 dark:text-neutral-400 mb-1;
+}
+
+.assistant-system-content {
+  @apply font-mono text-xs p-2 bg-green-50 dark:bg-black/20 rounded-sm overflow-x-auto text-gray-800 dark:text-neutral-300 leading-relaxed;
+}
+
+.assistant-system-content pre {
+  @apply m-0 p-0 whitespace-pre-wrap break-words;
+  font: inherit;
+  color: inherit;
+  line-height: inherit;
+}
+
+/* Assistant Tools */
+.assistant-tool {
+  @apply flex flex-col gap-2;
+}
+
+.assistant-tool-header {
+  @apply flex items-center gap-2 text-sm font-medium;
+}
+
+.assistant-tool-icon {
+  @apply w-4 h-4 shrink-0;
+}
+
+.assistant-tool-icon--call {
+  @apply text-blue-500;
+}
+
+.assistant-tool-icon--response {
+  @apply text-green-500;
+}
+
+.assistant-tool-name--call {
+  @apply font-mono text-xs px-2 py-0.5 bg-blue-500/20 rounded-sm text-blue-700 dark:text-blue-300;
+}
+
+.assistant-tool-name--response {
+  @apply font-mono text-xs px-2 py-0.5 bg-green-500/20 rounded-sm text-green-700 dark:text-green-300;
+}
+
+.assistant-tool-label {
+  @apply text-xs text-gray-600 dark:text-neutral-400;
+}
+
+.assistant-tool-details {
+  @apply cursor-pointer;
+}
+
+.assistant-tool-summary {
+  @apply select-none text-xs text-gray-600 dark:text-neutral-400 mb-1;
+}
+
+.assistant-tool-arguments,
+.assistant-tool-response {
+  @apply font-mono text-xs p-2 rounded-sm overflow-x-auto text-gray-800 dark:text-neutral-300 leading-relaxed;
+}
+
+.assistant-tool-arguments {
+  @apply bg-gray-100 dark:bg-black/20;
+}
+
+.assistant-tool-response {
+  @apply bg-green-50 dark:bg-black/20;
+}
+
+.assistant-tool-arguments pre,
+.assistant-tool-response pre {
+  @apply m-0 p-0 whitespace-pre-wrap break-words;
+  font: inherit;
+  color: inherit;
+  line-height: inherit;
+}
+
+/* Assistant Form */
+.assistant-form {
+  @apply flex flex-col gap-2;
+}
+
+.assistant-form-model-select {
+  @apply flex items-center gap-2;
+}
+
+.assistant-form-input-row {
+  @apply flex gap-2 mt-2;
+}
+
+.assistant-form-input {
+  @apply flex-1 border border-border bg-background font-inter px-3 py-2 rounded-sm text-foreground text-sm focus:outline-none;
+}
+
+/* Assistant JSON Content */
+.assistant-json-content {
+  @apply font-mono text-xs whitespace-pre-wrap break-words;
+}

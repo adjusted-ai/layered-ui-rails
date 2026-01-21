@@ -1,0 +1,24 @@
+<%= form_with(
+      model: Layered::Assistant::Message.new,
+      url: layered_assistant.conversation_messages_path(conversation),
+      class: "assistant-form"
+    ) do |form| %>
+  <div class="assistant-form-model-select">
+    <%= form.select :ai_model_id,
+        options_for_select(
+          Layered::Assistant::Ai::Api.includes(:models).order(:position).flat_map do |api|
+            api.models.order(:position).map { |model| ["#{api.name}: #{model.name}", model.id] }
+          end,
+          session[Layered::Assistant.config.session_ai_model_key]
+        ),
+        {},
+        { class: "select text-xs flex-1" } %>
+  </div>
+  <div class="assistant-form-input-row">
+    <%= form.text_field :content,
+        placeholder: "Type a message...",
+        class: "assistant-form-input",
+        autocomplete: "off" %>
+    <%= form.submit "Send", class: "btn-primary" %>
+  </div>
+<% end %>

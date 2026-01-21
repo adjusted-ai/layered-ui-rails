@@ -1,0 +1,11 @@
+<%# Try to parse as JSON for pretty printing, or fallback to markdown %>
+<%
+  begin
+    parsed_json = JSON.parse(content)
+%>
+  <pre class="assistant-json-content"><%= pretty_json(content) %></pre>
+<%
+  rescue JSON::ParserError
+%>
+  <%= markdown(content) %>
+<% end %>

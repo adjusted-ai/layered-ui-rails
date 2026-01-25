@@ -36,7 +36,7 @@ module LayeredUi
 
       def show_instructions
         say ""
-        say "layered-ui installed successfully!", :green
+        say "layered-ui-rails installed successfully!", :green
         say ""
         say "Copied app/assets/tailwind/layered_ui.css and imported into app/assets/tailwind/application.css"
         say ""

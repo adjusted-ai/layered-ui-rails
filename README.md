@@ -1,4 +1,4 @@
-# layered-ui
+# layered-ui-rails
 
 Foundational responsive UI system for Rails applications with light and dark theme support.
 
@@ -12,7 +12,7 @@ Foundational responsive UI system for Rails applications with light and dark the
 Add to your Gemfile:
 
 ```ruby
-gem "layered-ui"
+gem "layered-ui-rails"
 ```
 
 Then run:

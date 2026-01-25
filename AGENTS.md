@@ -4,11 +4,11 @@ This file provides guidance to AI agents when working with code in this reposito
 
 ## Project Overview
 
-This is **layered-ui**, a Rails 8+ engine gem that provides a foundational responsive UI system for Rails applications with light and dark theme support. It delivers design tokens, Tailwind CSS utilities, and Stimulus.js controllers for theme switching and mobile navigation. This is a pure frontend gem with no server-side logic.
+This is **layered-ui-rails**, a Rails 8+ engine gem that provides a foundational responsive UI system for Rails applications with light and dark theme support. It delivers design tokens, Tailwind CSS utilities, and Stimulus.js controllers for theme switching and mobile navigation. This is a pure frontend gem with no server-side logic.
 
 ## Architecture
 
-**Entry Point:** `require "layered-ui"` loads `lib/layered/ui.rb` → `lib/layered/ui/engine.rb`
+**Entry Point:** `require "layered-ui-rails"` loads `lib/layered/ui.rb` → `lib/layered/ui/engine.rb`
 
 **Engine Setup (`lib/layered/ui/engine.rb`):**
 - Registers importmap paths from `config/importmap.rb`
@@ -38,10 +38,10 @@ This is **layered-ui**, a Rails 8+ engine gem that provides a foundational respo
 bundle install
 
 # Build gem locally
-gem build layered-ui.gemspec
+gem build layered-ui-rails.gemspec
 
 # Install gem locally for testing
-gem install ./layered-ui-0.1.0.gem
+gem install ./layered-ui-rails-0.1.0.gem
 ```
 
 ## Key Conventions

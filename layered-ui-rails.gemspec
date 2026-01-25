@@ -15,4 +15,12 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "rails", ">= 7.0"
   spec.add_dependency "tailwindcss-rails", ">= 4.0"
+
+  spec.post_install_message = <<~MSG
+    To complete installation, run:
+
+      bin/rails generate layered:ui:install
+
+    This will copy the CSS and add an import to your application.css.
+  MSG
 end

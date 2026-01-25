@@ -4,7 +4,7 @@ Foundational responsive UI system for Rails applications with light and dark the
 
 ## Requirements
 
-- Ruby on Rails >= 8.0
+- Ruby on Rails >= 7.0
 - Tailwind CSS Rails >= 4.0
 
 ## Installation
@@ -28,7 +28,7 @@ bundle install
 Run the install generator to copy the CSS to your application:
 
 ```bash
-bin/rails generate layered_ui:install
+bin/rails generate layered:ui:install
 ```
 
 This will:

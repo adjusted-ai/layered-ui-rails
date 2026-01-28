@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="l-ui-html">
   <head>
     <title><%= content_for(:title) || "Layered" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -27,7 +27,7 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="body theme-light" data-controller="mobile-menu theme-switcher" data-action="click@window->mobile-menu#close">
+  <body class="l-ui-body theme-light" data-controller="mobile-menu theme-switcher" data-action="click@window->mobile-menu#close">
     <% if user_signed_in? %>
       <%= turbo_stream_from current_user %>
     <% end %>
@@ -36,7 +36,7 @@
     <%= yield :assistant %>
 
     <main>
-      <div class="page <%= 'page--with-nav' if user_signed_in? %>">
+      <div class="l-ui-page <%= 'l-ui-page--with-nav' if user_signed_in? %>">
         <%= render "layouts/layered_ui/notice" %>
         <%= yield %>
       </div>

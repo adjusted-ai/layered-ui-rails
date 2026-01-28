@@ -18,7 +18,7 @@ This is **layered-ui-rails**, a Rails 7+ engine gem that provides a foundational
 - Design tokens as CSS variables (HSL format) with light/dark mode variants
 - Dark mode via `.dark` class on `<html>` (class-based, not media query)
 - Custom Tailwind `@theme` block exposes tokens as utilities (e.g., `bg-background`, `text-foreground`)
-- Component classes: `.btn-primary`, `.field`, `.nav-item`, `.notice--success`, etc.
+- Component classes: `.btn-primary`, `.field`, `.nav__item`, `.notice--success`, etc.
 - Layout: 63px header, 240px sidebar, 320px assistant panel
 
 **Generator (`lib/generators/layered/ui/install_generator.rb`):**

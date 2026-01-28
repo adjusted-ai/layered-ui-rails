@@ -1,12 +1,12 @@
 <div class="auth-links">
   <%- if controller_name != 'sessions' %>
-    <p class="paragraph--compact">
+    <p>
       Already have an account? <%= link_to "Sign in", new_session_path(resource_name), class: "link" %>
     </p>
   <% end %>
 
   <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-    <p class="paragraph--compact">
+    <p>
       Don't have an account? <%= link_to "Sign up", new_registration_path(resource_name), class: "link" %>
     </p>
   <% end %>

@@ -1,9 +1,7 @@
 @import "tailwindcss";
 
-/* Make dark mode class-based instead of media query */
 @variant dark (&:where(.dark, .dark *));
 
-/* Design tokens you'll switch at runtime */
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -93,265 +91,7 @@
   @apply font-manrope font-bold;
 }
 
-/* Pages */
-html {
-  height: calc(100% - 63px);
-}
-
-body {
-  @apply antialiased h-full bg-background font-inter text-foreground;
-}
-
-.page {
-  @apply relative top-[63px] p-4;
-}
-
-.page--with-nav {
-  @apply md:ml-[240px];
-}
-
-.page--vertically-centered {
-  @apply flex flex-col items-center justify-center h-full;
-}
-
-.page--width-constrained {
-  @apply w-full flex flex-col max-w-xl;
-}
-
-/* Containers */
-.container--header {
-  @apply fixed top-0 left-0 right-0 bg-background border-b border-border z-50;
-}
-
-.header {
-  @apply h-[63px] px-4 py-3 flex items-center justify-between;
-}
-
-.header-nav {
-  @apply flex items-center gap-4;
-}
-
-.header-logo {
-  @apply h-8;
-}
-
-.header-logo--light {
-  @apply block;
-}
-
-.header-logo--dark {
-  @apply hidden;
-}
-
-.dark .header-logo--light {
-  @apply hidden;
-}
-
-.dark .header-logo--dark {
-  @apply block;
-}
-
-.theme-toggle {
-  @apply text-foreground-muted p-2 transition-opacity cursor-pointer;
-}
-
-.theme-toggle-icon--light {
-  @apply block;
-}
-
-.theme-toggle-icon--dark {
-  @apply hidden;
-}
-
-.dark .theme-toggle-icon--light {
-  @apply hidden;
-}
-
-.dark .theme-toggle-icon--dark {
-  @apply block;
-}
-
-/* Icons */
-.icon-sm {
-  @apply w-5 h-5;
-}
-
-.icon-md {
-  @apply w-6 h-6;
-}
-
-.container--nav {
-  @apply w-[240px] fixed top-[63px] left-0 bottom-0 bg-background border-r border-t border-border z-50 transform -translate-x-full md:translate-x-0 transition-transform duration-200;
-}
-
-.container--nav.open {
-  @apply translate-x-0;
-}
-
-.nav {
-  @apply flex flex-col h-full p-4;
-}
-
-.mobile-menu-btn {
-  @apply p-2 text-foreground transition-colors cursor-pointer hover:text-button-primary-bg md:hidden;
-}
-
-.nav-item {
-  @apply block w-full text-left px-3 py-2 text-sm text-foreground hover:bg-surface rounded-sm transition-colors;
-}
-
-.nav-item--active {
-  @apply bg-surface-active font-medium;
-}
-
-.nav-links {
-  @apply flex-1 flex flex-col gap-2;
-}
-
-.nav-user {
-  @apply mt-4;
-}
-
-.nav-user-name {
-  @apply text-sm font-bold mt-4;
-}
-
-.nav-user-email {
-  @apply text-xs text-foreground-muted mt-0.5;
-}
-
-.container--checkbox {
-  @apply flex items-center gap-2;
-}
-
-/* Buttons */
-.btn-primary {
-  @apply px-4 py-1.5 text-sm font-medium rounded-sm transition-colors cursor-pointer bg-button-primary-bg text-button-primary-text;
-}
-
-.btn-primary--full {
-  @apply px-4 py-1.5 text-sm font-medium rounded-sm transition-colors cursor-pointer bg-button-primary-bg text-button-primary-text w-full text-center;
-}
-
-.btn-outline {
-  @apply px-4 py-1.5 text-sm font-medium rounded-sm transition-colors cursor-pointer text-foreground border border-border;
-}
-
-.btn-outline--full {
-  @apply px-4 py-1.5 text-sm font-medium rounded-sm transition-colors cursor-pointer text-foreground border border-border w-full text-center;
-}
-
-.btn-outline--danger {
-  @apply px-4 py-1.5 text-sm font-medium rounded-sm transition-colors cursor-pointer text-danger border border-danger;
-}
-
-.btn-outline--danger-full {
-  @apply px-4 py-1.5 text-sm font-medium rounded-sm transition-colors cursor-pointer text-danger border border-danger w-full text-center;
-}
-
-/* Notices */
-.notice {
-  @apply w-full py-2 px-3 text-sm rounded mb-4;
-}
-
-.notice--success {
-  @apply bg-success-bg text-success-text;
-}
-
-.notice--warning {
-  @apply bg-warning-bg text-warning-text;
-}
-
-.notice--error {
-  @apply bg-error-bg text-error-text;
-}
-
-/* Forms */
-.form {
-  @apply w-full mt-4;
-}
-
-.form-group {
-  @apply mt-4;
-}
-
-.form-group--large {
-  @apply mt-8;
-}
-
-.form-hint {
-  @apply text-xs text-foreground-muted;
-}
-
-.form-required {
-  @apply text-danger;
-}
-
-.form-errors {
-  @apply w-full py-2 px-3 border border-danger text-danger text-sm font-medium rounded-md mt-4;
-}
-
-.form-errors-list {
-  @apply font-inter text-sm list-disc pl-3 mt-2;
-}
-
-.field-error {
-  @apply text-danger text-xs mt-1;
-}
-
-.label--checkbox {
-  @apply label cursor-pointer;
-}
-
-.field {
-  @apply block border border-border font-inter mt-2 px-3 py-2 rounded-sm text-foreground text-sm w-full focus:outline-none;
-}
-
-.field_with_errors .field {
-  @apply text-xs border-danger;
-}
-
-.select {
-  @apply block border border-border bg-background font-inter pl-3 pr-8 py-2 rounded-sm text-foreground text-sm w-full focus:outline-none cursor-pointer;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23a3a3a3'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
-  background-position: right 0.5rem center;
-  background-repeat: no-repeat;
-  background-size: 1rem;
-  appearance: none;
-}
-
-/* Radio/Checkbox groups */
-.radio-group {
-  @apply mt-2 flex flex-col gap-2;
-}
-
-.radio-item {
-  @apply flex items-center;
-}
-
-.radio-input {
-  @apply mr-2;
-}
-
-.radio-label {
-  @apply text-sm;
-}
-
 /* Typography */
-.paragraph {
-  @apply leading-relaxed text-sm mt-4;
-}
-
-.paragraph--compact {
-  @apply leading-relaxed text-sm mt-0;
-}
-
-/* Auth links */
-.auth-links {
-  @apply flex flex-col gap-1 text-sm;
-}
-
-/* Headings */
 h1 {
   @apply heading text-xl;
 }
@@ -364,148 +104,402 @@ h3 {
   @apply heading;
 }
 
-/* Links */
-.link {
+p {
+  @apply leading-relaxed text-sm mt-0;
+}
+
+/* Link */
+.l-ui-link {
   @apply text-link hover:text-link-hover;
 }
 
-/* Dropdowns */
-.dropdown {
-  @apply relative;
+/* Page */
+.l-ui-html {
+  height: calc(100% - 63px);
 }
 
-.dropdown-trigger {
-  @apply text-xs font-medium text-foreground cursor-pointer list-none flex items-center hover:text-button-primary-bg transition-colors;
+.l-ui-body {
+  @apply antialiased h-full bg-background font-inter text-foreground;
 }
 
-.dropdown-trigger::-webkit-details-marker {
+.l-ui-page {
+  @apply relative top-[63px] p-4;
+}
+
+.l-ui-page--with-nav {
+  @apply md:ml-[240px];
+}
+
+.l-ui-page--vertically-centered {
+  @apply flex flex-col items-center justify-center h-full;
+}
+
+.l-ui-page--width-constrained {
+  @apply w-full flex flex-col max-w-xl;
+}
+
+/* Header */
+.l-ui-container--header {
+  @apply fixed top-0 left-0 right-0 bg-background border-b border-border z-50;
+}
+
+.l-ui-header {
+  @apply h-[63px] px-4 py-3 flex items-center justify-between;
+}
+
+.l-ui-header__nav {
+  @apply flex items-center gap-4;
+}
+
+.l-ui-header__logo {
+  @apply h-8;
+}
+
+.l-ui-header__logo--light {
+  @apply block;
+}
+
+.l-ui-header__logo--dark {
   @apply hidden;
 }
 
-.dropdown-menu {
+.dark .l-ui-header__logo--light {
+  @apply hidden;
+}
+
+.dark .l-ui-header__logo--dark {
+  @apply block;
+}
+
+/* Theme */
+.l-ui-theme-toggle {
+  @apply text-foreground-muted p-2 transition-opacity cursor-pointer;
+}
+
+.l-ui-theme-toggle__icon--light {
+  @apply block;
+}
+
+.l-ui-theme-toggle__icon--dark {
+  @apply hidden;
+}
+
+.dark .l-ui-theme-toggle__icon--light {
+  @apply hidden;
+}
+
+.dark .l-ui-theme-toggle__icon--dark {
+  @apply block;
+}
+
+/* Icon */
+.l-ui-icon--sm {
+  @apply w-5 h-5;
+}
+
+.l-ui-icon--md {
+  @apply w-6 h-6;
+}
+
+/* Navigation */
+.l-ui-container--nav {
+  @apply w-[240px] fixed top-[63px] left-0 bottom-0 bg-background border-r border-t border-border z-50 transform -translate-x-full md:translate-x-0 transition-transform duration-200;
+}
+
+.l-ui-container--nav.open {
+  @apply translate-x-0;
+}
+
+.l-ui-nav {
+  @apply flex flex-col h-full p-4;
+}
+
+.l-ui-nav__item {
+  @apply block w-full text-left px-3 py-2 text-sm text-foreground hover:bg-surface rounded-sm transition-colors;
+}
+
+.l-ui-nav__item--active {
+  @apply bg-surface-active font-medium;
+}
+
+.l-ui-nav__links {
+  @apply flex-1 flex flex-col gap-2;
+}
+
+.l-ui-nav__user {
+  @apply mt-4;
+}
+
+.l-ui-nav__user-name {
+  @apply text-sm font-bold mt-4;
+}
+
+.l-ui-nav__user-email {
+  @apply text-xs text-foreground-muted mt-0.5;
+}
+
+/* Buttons */
+.l-ui-btn-primary {
+  @apply px-4 py-1.5 text-sm font-medium rounded-sm transition-colors cursor-pointer bg-button-primary-bg text-button-primary-text;
+}
+
+.l-ui-btn-primary--full {
+  @apply px-4 py-1.5 text-sm font-medium rounded-sm transition-colors cursor-pointer bg-button-primary-bg text-button-primary-text w-full text-center;
+}
+
+.l-ui-btn-outline {
+  @apply px-4 py-1.5 text-sm font-medium rounded-sm transition-colors cursor-pointer text-foreground border border-border;
+}
+
+.l-ui-btn-outline--full {
+  @apply px-4 py-1.5 text-sm font-medium rounded-sm transition-colors cursor-pointer text-foreground border border-border w-full text-center;
+}
+
+.l-ui-btn-outline--danger {
+  @apply px-4 py-1.5 text-sm font-medium rounded-sm transition-colors cursor-pointer text-danger border border-danger;
+}
+
+.l-ui-btn-outline--danger-full {
+  @apply px-4 py-1.5 text-sm font-medium rounded-sm transition-colors cursor-pointer text-danger border border-danger w-full text-center;
+}
+
+.l-ui-btn--mobile-menu {
+  @apply p-2 text-foreground transition-colors cursor-pointer hover:text-button-primary-bg md:hidden;
+}
+
+/* Notice */
+.l-ui-notice {
+  @apply w-full py-2 px-3 text-sm rounded mb-4;
+}
+
+.l-ui-notice--success {
+  @apply bg-success-bg text-success-text;
+}
+
+.l-ui-notice--warning {
+  @apply bg-warning-bg text-warning-text;
+}
+
+.l-ui-notice--error {
+  @apply bg-error-bg text-error-text;
+}
+
+/* Form */
+.l-ui-form {
+  @apply w-full mt-4;
+}
+
+.l-ui-form__errors-list {
+  @apply font-inter text-sm list-disc pl-3 mt-2;
+}
+
+.l-ui-form__group {
+  @apply mt-4;
+}
+
+.l-ui-form__group--large-gap {
+  @apply mt-8;
+}
+
+.l-ui-form__hint {
+  @apply text-xs text-foreground-muted;
+}
+
+.l-ui-form__required {
+  @apply text-danger;
+}
+
+.l-ui-form__errors {
+  @apply w-full py-2 px-3 border border-danger text-danger text-sm font-medium rounded-md mt-4;
+}
+
+.l-ui-field {
+  @apply block border border-border font-inter mt-2 px-3 py-2 rounded-sm text-foreground text-sm w-full focus:outline-none;
+}
+
+.field_with_errors .l-ui-field {
+  @apply text-xs border-danger;
+}
+
+.l-ui-field__error {
+  @apply text-danger text-xs mt-1;
+}
+
+.l-ui-container--checkbox {
+  @apply flex items-center gap-2;
+}
+
+.l-ui-label--checkbox {
+  @apply label cursor-pointer;
+}
+
+.l-ui-select {
+  @apply block border border-border bg-background font-inter pl-3 pr-8 py-2 rounded-sm text-foreground text-sm w-full focus:outline-none cursor-pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23a3a3a3'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  background-position: right 0.5rem center;
+  background-repeat: no-repeat;
+  background-size: 1rem;
+  appearance: none;
+}
+
+.l-ui-radio__group {
+  @apply mt-2 flex flex-col gap-2;
+}
+
+.l-ui-radio__item {
+  @apply flex items-center;
+}
+
+.l-ui-radio__input {
+  @apply mr-2;
+}
+
+.l-ui-radio__label {
+  @apply text-sm;
+}
+
+/* Auth links */
+.l-ui-auth-links {
+  @apply flex flex-col gap-1 text-sm;
+}
+
+/* Dropdowns */
+.l-ui-dropdown {
+  @apply relative;
+}
+
+.l-ui-dropdown__trigger {
+  @apply text-xs font-medium text-foreground cursor-pointer list-none flex items-center hover:text-button-primary-bg transition-colors;
+}
+
+.l-ui-dropdown__trigger::-webkit-details-marker {
+  @apply hidden;
+}
+
+.l-ui-dropdown__menu {
   @apply absolute right-0 mt-2 w-48 bg-surface border border-surface-subtle rounded-sm shadow-lg z-50;
 }
 
-.dropdown-item {
+.l-ui-dropdown__item {
   @apply block w-full text-left px-4 py-2 text-xs text-foreground hover:bg-surface-subtle transition-colors cursor-pointer border-0 bg-transparent font-inter;
 }
 
-.dropdown-item--active {
+.l-ui-dropdown__item--active {
   @apply bg-surface-active font-medium;
 }
 
 /* Tables */
-.table {
+.l-ui-table {
   @apply min-w-full divide-y divide-border;
 }
 
-.table-header {
+.l-ui-table__header {
   @apply bg-transparent;
 }
 
-.table-header-cell {
+.l-ui-table__header-cell {
   @apply py-3 text-left text-sm font-bold font-manrope;
 }
 
-.table-body {
+.l-ui-table__body {
   @apply bg-background divide-y divide-border;
 }
 
-.table-cell {
+.l-ui-table__cell {
   @apply py-4 whitespace-nowrap text-sm;
 }
 
-.table-cell--primary {
+.l-ui-table__cell--primary {
   @apply py-4 whitespace-nowrap text-sm font-medium;
 }
 
-.table-cell--muted {
+.l-ui-table__cell--muted {
   @apply py-4 whitespace-nowrap text-sm text-foreground-muted;
 }
 
-/* Pagination */
-.pagy {
+/* Pagy */
+.l-ui-pagy {
   @apply flex items-center justify-center gap-1 mt-6 select-none;
 }
 
-.pagy a,
-.pagy span {
+.l-ui-pagy a,
+.l-ui-pagy span {
   @apply flex items-center justify-center h-8 px-3 text-sm font-medium rounded-sm transition-colors min-w-[2rem];
 }
 
-.pagy a {
+.l-ui-pagy a {
   @apply text-foreground hover:bg-surface-subtle;
 }
 
-.pagy a[aria-current="page"] {
+.l-ui-pagy a[aria-current="page"] {
   @apply bg-surface-active text-foreground font-bold pointer-events-none;
 }
 
-.pagy .disabled {
+.l-ui-pagy .disabled {
   @apply text-foreground-muted opacity-50 cursor-not-allowed;
 }
 
-.pagy .gap {
+.l-ui-pagy .gap {
   @apply text-foreground-muted pointer-events-none;
 }
 
 /* Badges */
-.badge--number {
+.l-ui-badge--number {
   @apply flex-shrink-0 w-6 h-6 rounded-full bg-surface-subtle border border-border flex items-center justify-center text-xs font-medium text-foreground-muted;
 }
 
-.badge-default {
+.l-ui-badge-default {
   @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200;
 }
 
-.badge-github {
+.l-ui-badge-github {
   @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200;
 }
 
-.badge-netlify {
+.l-ui-badge-netlify {
   @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-teal-100 text-teal-800 dark:bg-teal-900 dark:text-teal-200;
 }
 
-.badge-cloudflare {
+.l-ui-badge-cloudflare {
   @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200;
 }
 
 /* Assistant */
-.container--assistant{
+.l-ui-container--assistant{
   @apply w-full md:w-[320px] fixed top-[63px] right-0 bottom-0 bg-background border-l border-border z-40 transform translate-x-full transition-transform duration-300;
 }
 
-.container--assistant.open {
+.l-ui-container--assistant.open {
   @apply translate-x-0;
 }
 
-.assistant-fab {
+.l-ui-fab {
   @apply fixed bottom-6 right-6 w-14 h-14 bg-button-primary-bg text-button-primary-text rounded-full shadow-lg hover:bg-button-primary-hover transition-all z-40 flex items-center justify-center;
 }
 
-.assistant-fab.hidden {
+.l-ui-fab.hidden {
   @apply opacity-0 pointer-events-none;
 }
 
 /* Typing indicator */
-.typing-indicator {
+.l-ui-typing-indicator {
   display: inline-block;
   position: relative;
   top: -2px;
   min-height: 1em;
 }
 
-.typing-indicator::after {
+.l-ui-typing-indicator::after {
   content: "";
   display: inline-block;
   width: 6px;
   height: 6px;
-  background: hsl(var(--typing-indicator));
+  background: hsl(var(--l-ui-typing-indicator));
   border-radius: 50%;
-  animation: typing-indicator-pulse 1s infinite ease-in-out;
+  animation: l-ui-typing-indicator-pulse 1s infinite ease-in-out;
 }
 
-@keyframes typing-indicator-pulse {
+@keyframes l-ui-typing-indicator-pulse {
   0%, 100% { opacity: 0.25; }
   50% { opacity: 1; }
 }

@@ -1,21 +1,21 @@
 <% if user_signed_in? %>
-  <nav class="container--nav" data-mobile-menu-target="nav">
-    <div class="nav">
-      <div class="nav-links">
+  <nav class="l-ui-container--nav" data-mobile-menu-target="nav">
+    <div class="l-ui-nav">
+      <div class="l-ui-nav__links">
         <%= yield :nav_links %>
       </div>
 
       <div>
-        <div class="nav-user-name"><%= current_user.name %></div>
+        <div class="l-ui-nav__user-name"><%= current_user.name %></div>
 
-        <div class="nav-user-email">
+        <div class="l-ui-nav__user-email">
           <%= current_user.email %>
         </div>
 
         <%= yield :nav_team_selector %>
 
-        <div class="nav-user">
-          <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "btn-outline--danger-full" %>
+        <div class="l-ui-nav__user">
+          <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "l-ui-btn-outline--danger-full" %>
         </div>
       </div>
     </div>

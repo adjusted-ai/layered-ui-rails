@@ -1,19 +1,19 @@
-<header class="container--header">
-  <div class="header">
+<header class="l-ui-container--header">
+  <div class="l-ui-header">
     <%= link_to root_path do %>
-      <%= image_tag("layered_ui/logo_layered_large_light.svg", alt: "layered.ai", class: "header-logo header-logo--light") %>
-      <%= image_tag("layered_ui/logo_layered_large_dark.svg", alt: "layered.ai", class: "header-logo header-logo--dark") %>
+      <%= image_tag("layered_ui/logo_layered_large_light.svg", alt: "layered.ai", class: "l-ui-header__logo l-ui-header__logo--light") %>
+      <%= image_tag("layered_ui/logo_layered_large_dark.svg", alt: "layered.ai", class: "l-ui-header__logo l-ui-header__logo--dark") %>
     <% end %>
 
-    <nav class="header-nav">
+    <nav class="l-ui-header__nav">
       <button
         data-controller="theme"
         data-action="click->theme#toggle"
-        class="theme-toggle"
+        class="l-ui-theme-toggle"
         aria-label="Toggle theme"
       >
         <svg
-          class="icon-sm theme-toggle-icon--light"
+          class="l-ui-icon--sm l-ui-theme-toggle__icon--light"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -28,7 +28,7 @@
         </svg>
 
         <svg
-          class="icon-sm theme-toggle-icon--dark"
+          class="l-ui-icon--sm l-ui-theme-toggle__icon--dark"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -47,11 +47,11 @@
         <%= yield :header_project_selector %>
         <button
           type="button"
-          class="mobile-menu-btn"
+          class="l-ui-btn-mobile-menu"
           data-action="click->mobile-menu#toggle"
         >
           <svg
-            class="icon-md"
+            class="l-ui-icon--md"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -65,8 +65,8 @@
           </svg>
         </button>
       <% else %>
-        <%= link_to "Login", new_user_session_path, class: "btn-outline" %>
-        <%= link_to "Sign up", new_user_registration_path, class: "btn-primary" %>
+        <%= link_to "Login", new_user_session_path, class: "l-ui-btn-outline" %>
+        <%= link_to "Sign up", new_user_registration_path, class: "l-ui-btn-primary" %>
       <% end %>
     </nav>
   </div>

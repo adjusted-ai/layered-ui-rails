@@ -1,69 +1,69 @@
-<div class="page--vertically-centered">
-  <div class="page--width-constrained">
+<div class="l-ui-page--vertically-centered">
+  <div class="l-ui-page--width-constrained">
     <h1>Create an account</h1>
 
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'form' }) do |f| %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'l-ui-form' }) do |f| %>
       <%= render 'layouts/layered_ui/notice' %>
       <%= render 'layered_ui/shared/form_errors', item: resource %>
 
-      <div class="form-group">
+      <div class="l-ui-form__group">
         <%= render 'layered_ui/shared/label', form: f, field: :name, required: true %>
-        <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "field" %>
+        <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "l-ui-field" %>
         <%= render 'layered_ui/shared/field_error', object: resource, field: :name %>
       </div>
 
-      <div class="form-group">
+      <div class="l-ui-form__group">
         <%= render 'layered_ui/shared/label', form: f, field: :email, required: true %>
-        <%= f.email_field :email, autocomplete: "email", class: "field" %>
+        <%= f.email_field :email, autocomplete: "email", class: "l-ui-field" %>
         <%= render 'layered_ui/shared/field_error', object: resource, field: :email %>
       </div>
 
-      <div class="form-group">
+      <div class="l-ui-form__group">
         <%= render 'layered_ui/shared/label', form: f, field: :password, required: true %>
-        <%= f.password_field :password, autocomplete: "new-password", class: "field" %>
+        <%= f.password_field :password, autocomplete: "new-password", class: "l-ui-field" %>
         <%= render 'layered_ui/shared/field_error', object: resource, field: :password %>
         <% if @minimum_password_length %>
-          <em class="form-hint">(<%= @minimum_password_length %> characters minimum)</em>
+          <em class="l-ui-form__hint">(<%= @minimum_password_length %> characters minimum)</em>
         <% end %>
       </div>
 
-      <div class="form-group">
+      <div class="l-ui-form__group">
         <%= render 'layered_ui/shared/label', form: f, field: :password_confirmation, name: "Confirm password", required: true %>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "field" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "l-ui-field" %>
         <%= render 'layered_ui/shared/field_error', object: resource, field: :password_confirmation %>
         <% if @minimum_password_length %>
-          <em class="form-hint">Please enter the same password again</em>
+          <em class="l-ui-form__hint">Please enter the same password again</em>
         <% end %>
       </div>
 
-      <div class="form-group">
+      <div class="l-ui-form__group">
         <%= render 'layered_ui/shared/label', form: f, field: :expertise_level, name: "Expertise Level", required: true %>
-        <div class="radio-group">
-          <div class="radio-item">
-            <%= f.radio_button :expertise_level, "beginner", class: "radio-input" %>
-            <%= f.label :expertise_level_beginner, "Beginner - Step-by-step explanations using simple language", class: "radio-label" %>
+        <div class="l-ui-radio__group">
+          <div class="l-ui-radio__item">
+            <%= f.radio_button :expertise_level, "beginner", class: "l-ui-radio__input" %>
+            <%= f.label :expertise_level_beginner, "Beginner - Step-by-step explanations using simple language", class: "l-ui-radio__label" %>
           </div>
-          <div class="radio-item">
-            <%= f.radio_button :expertise_level, "novice", class: "radio-input" %>
-            <%= f.label :expertise_level_novice, "Novice - Basic concepts with implementation guidance", class: "radio-label" %>
+          <div class="l-ui-radio__item">
+            <%= f.radio_button :expertise_level, "novice", class: "l-ui-radio__input" %>
+            <%= f.label :expertise_level_novice, "Novice - Basic concepts with implementation guidance", class: "l-ui-radio__label" %>
           </div>
-          <div class="radio-item">
-            <%= f.radio_button :expertise_level, "intermediate", class: "radio-input" %>
-            <%= f.label :expertise_level_intermediate, "Intermediate - Working knowledge with best practice support", class: "radio-label" %>
+          <div class="l-ui-radio__item">
+            <%= f.radio_button :expertise_level, "intermediate", class: "l-ui-radio__input" %>
+            <%= f.label :expertise_level_intermediate, "Intermediate - Working knowledge with best practice support", class: "l-ui-radio__label" %>
           </div>
-          <div class="radio-item">
-            <%= f.radio_button :expertise_level, "expert", class: "radio-input" %>
-            <%= f.label :expertise_level_expert, "Expert - Advanced concepts and optimisation", class: "radio-label" %>
+          <div class="l-ui-radio__item">
+            <%= f.radio_button :expertise_level, "expert", class: "l-ui-radio__input" %>
+            <%= f.label :expertise_level_expert, "Expert - Advanced concepts and optimisation", class: "l-ui-radio__label" %>
           </div>
         </div>
         <%= render 'layered_ui/shared/field_error', object: resource, field: :expertise_level %>
       </div>
 
-      <div class="form-group--large">
-        <%= f.submit "Continue", class: "btn-primary--full" %>
+      <div class="l-ui-form__group--large-gap">
+        <%= f.submit "Continue", class: "l-ui-btn-primary--full" %>
       </div>
 
-      <div class="form-group">
+      <div class="l-ui-form__group">
         <%= render "devise/shared/links" %>
       </div>
     <% end %>
